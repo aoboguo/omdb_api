@@ -1,0 +1,14 @@
+<h1>Search for a movie:</h1>
+<%= form_tag movies_path, method: :get do %>
+	<%= text_field_tag :query, @query, placeholder: "Movie title" %>
+	<%= submit_tag "Search" %>
+<% end %>
+
+<h1>Search Results for "<%= @query %>":</h1>
+<% if @movies %>
+	<% @movies.each do |movie| %>
+		<p><%= movie["Title"] %> | <%= movie["Year"] %></p>
+	<% end %>
+<% else %>
+	<h1>Sorry, we couldn't find that!</h1>
+<% end %>
